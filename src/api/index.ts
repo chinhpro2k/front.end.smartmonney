@@ -4,8 +4,10 @@ export interface IApiResponse<T> {
   status: number
   body: T
 }
-const baseURL:string="localhost:3000"
+const baseURL:string="http://127.0.0.1:3000"
 function getRequest(url:string):Promise<IApiResponse<any>>{
+  const headers: { [key: string]: string } = {};
+  headers['Content-Type'] = 'application/json';
   return new Promise<any>(resolve => {
     Axios.get(
       baseURL + url,
