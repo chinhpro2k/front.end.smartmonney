@@ -19,11 +19,17 @@ export const AppRouter: React.FC<any>=()=> {
     <BrowserRouter ref={instance => setHistory(instance)}>
       <Switch>
         {/*Default*/}
-        <Redirect exact path={"/"} to={"/home"}/>
+        <Redirect exact path={"/"} to={"/login"}/>
         {/*Login Page*/}
 
-        {/*home Page*/}
-        <Route path={"/home"} component={lazy(() => import("./modules/auth/index"))}/>
+        {/*login Page*/}
+        <Route path={"/login"} component={lazy(() => import("./modules/auth/index"))}/>
+
+        {/*home user Page*/}
+        <Route path={"/home-user"} component={lazy(() => import("./modules/home/index"))}/>
+
+        {/*home Admin Page*/}
+        <Route path={"/home-admin"} component={lazy(() => import("./modules/homeAdmin/index"))}/>
 
         {/*404 notfound*/}
         <Route path={"/404.html"} component={lazy(() => import("./modules/404/index"))}/>

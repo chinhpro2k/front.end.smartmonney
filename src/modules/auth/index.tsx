@@ -28,9 +28,11 @@ class Index extends Component {
   }
   handleLongin(){
     if (this.account===''){
+      notify.show("Nhập tài khoản","warning",5)
       return false
     }
     if (this.passwordValue===''){
+      notify.show("Nhập mật khẩu","warning",5)
       return false
     }
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.account)){

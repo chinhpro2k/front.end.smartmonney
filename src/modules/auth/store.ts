@@ -8,14 +8,18 @@ class LoginStore{
   constructor() {
     makeObservable(this,{
       handleRegister:observable,
-      handleShowRegister:action
+      handleChangePass:observable,
+      handleShowRegister:action,
+      handleShowChangePass:action
     })
   }
   handleRegister:boolean=false
   handleShowRegister(){
-    if (this.handleRegister){
-      this.handleRegister=false
-    }else this.handleRegister=true
+    this.handleRegister = !this.handleRegister;
+  }
+  handleChangePass:boolean=false;
+  handleShowChangePass(){
+    this.handleChangePass = !this.handleChangePass;
   }
   async registerMember(data:IResRegister){
     const response=await postRequest(`/members/register`,data);
@@ -31,8 +35,9 @@ class LoginStore{
     const response=await postRequest(`/members/login`,data);
     if (response.status<400){
       notify.show("Đăng nhập thành công","success",3);
+      window.location.href = '/home-user';
     }else {
-
+      notify.show(response.body.message,"success",3);
     }
   }
 }

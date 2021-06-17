@@ -1,0 +1,40 @@
+.home{
+  .header-home{
+    margin-top: 30px;
+    margin-bottom: 20px;
+     h2{
+       color: #F54B24;
+     }
+  }
+  .middle-home{
+    .select{
+      border: 1px solid #E1E1E1;
+      background-color: #FFFFFF;
+      color: #000000;
+      padding: 6px 12px;
+      margin-bottom: 30px;
+      width: 200px;
+      border-radius: 6px;
+      box-shadow: 0 5px #E1E1E1;
+      &:hover{
+        color:#F54B24;
+        border: 1px solid #F54B24;
+      }
+    }
+  }
+  .footer-home{
+    margin-top: 30px;
+    div{
+      margin-left: 12px;
+      cursor: pointer;
+    }
+    i{
+      color: #F54B24;
+      font-size: 30px;
+    }
+    p{
+      font-size: 13px;
+      color: #000000;
+    }
+  }
+}
