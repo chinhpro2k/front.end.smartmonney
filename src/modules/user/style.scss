@@ -1,0 +1,47 @@
+.user{
+  .header-user{
+    margin-top: 30px;
+    .btn-back{
+      cursor: pointer;
+      top: 0;
+      left: 20px;
+      i{
+        font-size: 30px;
+      }
+    }
+  }
+  .middle-user{
+    .image-user{
+      margin-top: 30px;
+      margin-bottom: 30px;
+      margin-left: 50px;
+      width: 60px;
+      height: 60px;
+      background-color: #1d72f1;
+      color: #FFFFFF;
+      border-radius: 4px;
+      p{
+        font-size: 40px;
+      }
+    }
+    .information{
+      div{
+        p:first-child{
+          width: 100px;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+  .footer-user{
+    margin-top: 20px;
+    button{
+      width: 200px;
+      background-color: #FFFFFF;
+      color: #F54B24;
+      border-radius: 4px;
+      border: 1px solid #F54B24;
+      margin-bottom: 20px;
+    }
+  }
+}

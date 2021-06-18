@@ -16,6 +16,10 @@
       width: 200px;
       border-radius: 6px;
       box-shadow: 0 5px #E1E1E1;
+      a{
+        text-decoration: none;
+        color: #000000;
+      }
       &:hover{
         color:#F54B24;
         border: 1px solid #F54B24;
@@ -27,6 +31,10 @@
     div{
       margin-left: 12px;
       cursor: pointer;
+      a{
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
     i{
       color: #F54B24;

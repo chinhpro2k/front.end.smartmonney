@@ -26,13 +26,13 @@ export const AppRouter: React.FC<any>=()=> {
         <Route path={"/login"} component={lazy(() => import("./modules/auth/index"))}/>
 
         {/*home user Page*/}
-        <Route path={"/home-user"} component={lazy(() => import("./modules/home/index"))}/>
-
+        <Route exact path={"/home-user"} component={lazy(() => import("./modules/home/index"))}/>
+        <Route exact path={"/home-user/user"} component={lazy(() => import("./modules/user/index"))}/>
         {/*home Admin Page*/}
-        <Route path={"/home-admin"} component={lazy(() => import("./modules/homeAdmin/index"))}/>
+        <Route exact path={"/home-admin"} component={lazy(() => import("./modules/homeAdmin/index"))}/>
 
         {/*404 notfound*/}
-        <Route path={"/404.html"} component={lazy(() => import("./modules/404/index"))}/>
+        <Route exact path={"/404.html"} component={lazy(() => import("./modules/404/index"))}/>
         {/*router customer*/}
 
       </Switch>
