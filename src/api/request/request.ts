@@ -8,10 +8,30 @@ export interface IResLogin{
   "email": string,
   "password": string
 }
+export interface IResLoginAdmin{
+  "account": string,
+  "password": string
+}
 export interface IResUser{
   "id":string
   "firstName": string,
   "lastName": string,
   "email": string,
-  "password": string
+  "password": string,
+  type:string
+}
+export interface IResAdmin{
+  "id":string
+  "firstName": string,
+  "lastName": string,
+  type:string
+}
+export interface IReqQuestion{
+  "answer":
+    {
+      "content":string,
+      "point":number
+    }[]
+  "title": string,
+  "content": string
 }

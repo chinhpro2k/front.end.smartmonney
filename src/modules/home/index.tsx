@@ -4,6 +4,7 @@ import './style.scss'
 import ChangePassword from "../auth/popup/changePassword";
 import {store} from "../auth/store";
 import {Link} from "react-router-dom";
+import QuestionUser from "../questionUser";
 
 class Home extends Component {
   async componentDidMount() {
@@ -41,8 +42,10 @@ class Home extends Component {
                  <p>Tạo giao dịch</p>
                </div>
                <div>
-                 <i className="far fa-calendar-check"/>
-                 <p>Lập kế hoạch</p>
+                 <Link to={"/home-user/question"}>
+                   <i className="far fa-calendar-check"/>
+                   <p>Lập kế hoạch</p>
+                 </Link>
                </div>
                <div>
                  <Link to={"/home-user/user"}>

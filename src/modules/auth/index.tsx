@@ -5,7 +5,7 @@ import {store} from "./store";
 import {observer} from "mobx-react";
 import {action, makeObservable, observable} from "mobx";
 import {notify} from "../../common/notify/NotifyService";
-import {IResLogin} from "../../api/request/request";
+import {IResLogin, IResLoginAdmin} from "../../api/request/request";
 
 class Index extends Component {
   constructor(props:any) {
@@ -40,9 +40,18 @@ class Index extends Component {
         email:this.account,
         password:this.passwordValue
       }
-      store.login(data).then();
+      store.login(data,"user").then();
     }else {
-      notify.show("Nhập sai định dạng email","warning",5)
+      if (this.account==="admin"){
+        const data:IResLoginAdmin={
+          account:this.account,
+          password:this.passwordValue
+        }
+        store.login(data,"admin").then();
+      }else {
+        notify.show("Nhập sai định dạng email","warning",5)
+      }
+
     }
 
   }
@@ -52,7 +61,7 @@ class Index extends Component {
         <div className="header d-flex justify-content-center">
          <div>
            <div className="image">
-             <img src="./assets/images.png"/>
+             <img src="./assets/images.png" alt="alt"/>
            </div>
            <div className="title d-flex justify-content-center">
              <h1>Smart Money</h1>

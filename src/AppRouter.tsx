@@ -28,6 +28,7 @@ export const AppRouter: React.FC<any>=()=> {
         {/*home user Page*/}
         <Route exact path={"/home-user"} component={lazy(() => import("./modules/home/index"))}/>
         <Route exact path={"/home-user/user"} component={lazy(() => import("./modules/user/index"))}/>
+        <Route exact path={"/home-user/question"} component={lazy(() => import("./modules/questionUser/index"))}/>
         {/*home Admin Page*/}
         <Route exact path={"/home-admin"} component={lazy(() => import("./modules/homeAdmin/index"))}/>
 

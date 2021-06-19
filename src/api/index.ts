@@ -1,4 +1,4 @@
-import Axios, {AxiosError, Method} from "axios";
+import Axios, { Method} from "axios";
 import humps from "humps";
 export interface IApiResponse<T> {
   status: number
