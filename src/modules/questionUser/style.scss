@@ -1,0 +1,25 @@
+.question-user{
+  margin-top: 30px;
+  .header-question{
+    h2{
+      color: #F54B24;
+      font-size: 30px;
+    }
+  }
+  .list-question{
+    margin-left: 12px;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+  .footer-question{
+    margin-right: 20px;
+    margin-top: 20px;
+    button{
+      background-color: #FFFFFF;
+      border-radius: 4px;
+      border: 1px solid #F54B24;
+      color: #F54B24;
+      margin-right: 12px;
+    }
+  }
+}

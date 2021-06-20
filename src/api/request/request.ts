@@ -35,3 +35,9 @@ export interface IReqQuestion{
   "title": string,
   "content": string
 }
+
+export interface IReqPlan{
+  "point":number,
+  "planName": string,
+  "content": string
+}

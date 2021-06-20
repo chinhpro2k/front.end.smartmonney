@@ -4,7 +4,6 @@ import './style.scss'
 import ChangePassword from "../auth/popup/changePassword";
 import {store} from "../auth/store";
 import {Link} from "react-router-dom";
-import QuestionUser from "../questionUser";
 
 class Home extends Component {
   async componentDidMount() {

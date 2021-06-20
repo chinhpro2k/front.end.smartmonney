@@ -47,6 +47,7 @@ class AddQuestion extends Component {
     this.answer3=e.target.value
   }
   handleSendQuestion(){
+    this.answer=[]
     this.answer.push({
       "content":this.answer1,
       "point":1

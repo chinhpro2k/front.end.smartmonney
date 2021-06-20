@@ -1,64 +1,77 @@
 import React, {Component} from 'react';
 import {questionStore} from "./store";
+import Question from "./components/question";
 import {observer} from "mobx-react";
+import { makeObservable, observable, runInAction} from "mobx";
+import './style.scss'
+interface IQuestion{
+  history:{push:(path:string)=>any}
+}
 
-
-class QuestionUser extends Component {
-
+class QuestionUser extends Component<IQuestion,any> {
+  constructor(props:any) {
+    super(props);
+    makeObservable(this,{
+      question:observable,
+      prevAnswer:observable
+    })
+  }
   async componentDidMount() {
+    runInAction(()=>{
+      questionStore.pointQuestion=0;
+    })
     await questionStore.getQuestion();
   }
 
-  // handleChangeCheckbox = async (e: any) => {
-  //   console.log('radio checked', e.target.value);
-  //   // this.setState({
-  //   //   valueState:{
-  //   //     title: e.target.value.title,
-  //   //     point: e.target.value.point
-  //   //   },
-  //   // });
-  //  await this.setState(prevState => {
-  //     let valueState = Object.assign({}, prevState.valueState);    // tạo một bản sao của user
-  //     valueState.title = e.target.value.title              // cập nhật , gán giá trị mới
-  //     valueState.point=e.target.value.point
-  //     return { valueState };                                 // trả về object user mới
-  //   })
-  //   console.log(this.state.valueState)
-  // };
-
+  question:string=''
+  prevAnswer:number=0;
+  async handleSelect(data:number,question:string){
+    if (this.question!==question){
+      runInAction(()=>{
+        this.question=question
+      })
+      runInAction(()=>{
+       this.prevAnswer=data
+      })
+      runInAction(()=>{
+        questionStore.pointQuestion+=data;
+      })
+    }else {
+      runInAction(()=>{
+        questionStore.pointQuestion-=this.prevAnswer;
+      })
+      runInAction(()=>{
+        questionStore.pointQuestion+=data;
+      })
+      runInAction(()=>{
+        this.prevAnswer=data
+      })
+    }
+  }
+  async handlePlan(){
+    await questionStore.getSuccessPlan(questionStore.pointQuestion)
+    if (questionStore.successPlan.length!==0){
+      this.props.history.push('/home-user/question/plan');
+    }
+  }
   render() {
     try {
       if (questionStore.dataQuestion.length !== 0) {
         return (
           <div className="question-user">
-            <div className="header-question">
-
+            <div className="header-question text-center">
+              <h2>Câu hỏi</h2>
             </div>
             <div className="list-question" >
               {questionStore.dataQuestion.map((value, i) => {
                 return (
-                  <div key={i}>
-                    <div className="title">
-                      {value.title}
-                    </div>
-                    <div className="content">
-                      {value.content}
-                    </div>
-                    <div className="answer">
-                      {value.answer.map((value1)=>{
-                        return(
-                          <div className="d-flex align-items-center">
-                           <form>
-                             <input type={"radio"} id={value.title} value={value1.content}/>
-                             <label htmlFor={value.title}>{value1.content}</label>
-                           </form>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
+                <Question data={value} key={i} onSelect={(data:number,question:string)=>this.handleSelect(data,question)}/>
                 )
               })}
+            </div>
+            <div className="footer-question d-flex justify-content-end">
+              <button onClick={()=>this.props.history.push('/home-user')}>Trở về</button>
+              <button onClick={()=>this.handlePlan()}>Tiếp tục <i className="fas fa-chevron-right"/></button>
             </div>
           </div>
         );

@@ -4,6 +4,7 @@ import {store} from "../auth/store";
 import "./style.scss"
 import AddQuestion from "./popup/addQuestion";
 import {homeStore} from "./homeAdminStore";
+import AddPlan from "./popup/addPlan";
 
 interface IHomeAdmin{
   history: { length: number, push: (pash: string) => any, location: { search: string }, goBack: () => any },
@@ -33,7 +34,7 @@ class HomeAdmin extends Component <IHomeAdmin,any>{
           <div className="middle-home d-flex justify-content-center">
             <div>
               <div className="select">Quản lý người dùng</div>
-              <div className="select">Thêm kế hoạch</div>
+              <div className="select" onClick={()=>homeStore.handleClickAddPlan()}>Thêm kế hoạch</div>
               <div className="select">Chỉnh sửa thông báo</div>
               <div className="select" onClick={()=>homeStore.handleClickAddQuestion()}>Thêm câu hỏi</div>
             </div>
@@ -42,6 +43,7 @@ class HomeAdmin extends Component <IHomeAdmin,any>{
             <button onClick={()=>this.handleLogout()}>Đăng xuất</button>
           </div>
           {homeStore.isAddQuestion&& <AddQuestion/>}
+          {homeStore.isAddPlan&& <AddPlan/>}
         </div>
       );
     }else return null
