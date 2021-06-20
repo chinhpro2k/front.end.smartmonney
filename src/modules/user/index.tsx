@@ -73,7 +73,7 @@ class User extends Component<IUser,any> {
             </div>
           </div>
           <div className="footer-user d-flex flex-column justify-content-center align-items-center">
-            <button>Cập nhập thông tin</button>
+            {/*<button>Cập nhập thông tin</button>*/}
             <button onClick={()=>this.handleSignOut()}>Đăng xuất</button>
           </div>
         </div>

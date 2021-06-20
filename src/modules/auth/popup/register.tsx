@@ -65,16 +65,22 @@ class Register extends Component {
       notify.show("Nhập lại mật khẩu","warning",5)
       return false
     }
-    if (this.passwordValue===this.rePassword){
-      const data:IResRegister={
-        "firstName": this.firstName,
-        "lastName": this.lastName,
-        "email": this.account,
-        "password": this.passwordValue
+      if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(this.account)){
+        if (this.passwordValue===this.rePassword){
+        const data:IResRegister={
+          "firstName": this.firstName,
+          "lastName": this.lastName,
+          "email": this.account,
+          "password": this.passwordValue
+        }
+        store.registerMember(data).then()
       }
-      store.registerMember(data).then()
-    }else {
-      notify.show("mật khẩu không trùng khớp","error",5)
+        else {
+          notify.show("mật khẩu không trùng khớp","error",5)
+        }
+      }
+      else {
+        notify.show("nhập lại email","error",5)
     }
   }
   render() {
