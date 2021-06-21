@@ -6,6 +6,7 @@ import {observer} from "mobx-react";
 import {action, makeObservable, observable} from "mobx";
 import {notify} from "../../common/notify/NotifyService";
 import {IResLogin, IResLoginAdmin} from "../../api/request/request";
+import ForgotPassword from "./popup/forgotPassword";
 
 class Index extends Component {
   constructor(props:any) {
@@ -80,7 +81,7 @@ class Index extends Component {
               <input type="password" placeholder="nhập mật khẩu" onChange={(e:any)=>this.setPasswordValue(e)}/>
             </div>
             <div className="forgot-password">
-              <p>Quên mật khẩu</p>
+              <p onClick={()=>store.handleForgotPass=!store.handleForgotPass}>Quên mật khẩu</p>
             </div>
           </div>
         </div>
@@ -89,6 +90,7 @@ class Index extends Component {
           <button onClick={()=>this.handleLongin()}>Đăng nhập</button>
         </div>
         {store.handleRegister&& <Register/>}
+        {store.handleForgotPass&&<ForgotPassword/>}
       </div>
     );
   }

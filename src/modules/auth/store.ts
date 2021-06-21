@@ -11,9 +11,11 @@ class LoginStore{
       user:observable,
       eyeType:observable,
       admin:observable,
+      handleForgotPass:observable,
       handleShowRegister:action,
       handleShowChangePass:action,
-      getUser:action
+      getUser:action,
+      handleShowForgotPass:action
     })
   }
   handleRegister:boolean=false
@@ -25,7 +27,10 @@ class LoginStore{
     this.handleChangePass = !this.handleChangePass;
   }
   eyeType:boolean=false
-
+  handleForgotPass:boolean=false;
+  handleShowForgotPass(){
+    this.handleForgotPass = !this.handleForgotPass;
+  }
   async registerMember(data:IResRegister){
     const response=await postRequest(`/members/register`,data);
     if (response.status<400){
